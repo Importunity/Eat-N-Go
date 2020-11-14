@@ -20,6 +20,11 @@ const ShopSchema = new Schema({
     address: {
         type: String
     },
+    authorId: {
+        type: mongooose.Schema.Types.ObjectId, 
+        reference = "User", 
+        required: true
+    },
     food: [FoodSchema]
 })
 
