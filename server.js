@@ -1,17 +1,28 @@
-// logging
-const morgan = require("morgan");
-// web framework for nodejs
-const express = require("express");
-const path = require("path");
-require("./config/config")
-// initialize app to express
+import morgan from 'morgan';
+import express from 'express';
+import path from 'path';
+import './config/config.js';
 const app = express();
 
+// api routes
+//const authRoutes = require('./routes/api/auth_api');
+//const userRoutes = require('./routes/api/user_api');
+import authRoutes from './routes/api/auth_api.js';
+import userRoutes from './routes/api/user_api.js';
+//import shopRoutes from './routes/api/shop_api.js';
+//import reviewRoutes from './routes/api/review_api.js';
 
 
 app.use(express.json());
 // logger
 app.use(morgan("dev"));
+
+app.use('/api/auth', authRoutes);
+app.use('/api/users', userRoutes);
+//app.use('/api/shops', shopRoutes);
+//app.use('/api/users', reviewRoutes);
+
+
 
 if(process.env.NODE_ENV === "production"){
     app.use(express.static("client/build"));
