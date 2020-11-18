@@ -1,0 +1,12 @@
+.navbar-button{
+    outline: none !important;
+    color: inherit !important;
+}
+
+.navbar-button:hover{
+    text-decoration: none !important;
+}
+
+#logo{
+    border: none !important;
+}
