@@ -1,5 +1,5 @@
 <h1>Description:</h1>
-<p>User Reviews of Food Restaurants that are listed in the Eat N Go facebook group page</p>
+<p>User Reviews of Food Restaurants</p>
 <hr>
 <h1>TODO:</h1>
 <ol>
