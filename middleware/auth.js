@@ -4,7 +4,7 @@ export default (request, response, next) => {
     const token = request.header('x-auth-token');
 
     if(!token){
-        return response.status*(401).json({msg: "No token, authorization denied"});
+        return response.status(401).json({msg: "No token, authorization denied"});
     }
 
     try{
