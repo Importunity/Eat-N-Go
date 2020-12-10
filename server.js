@@ -9,7 +9,7 @@ const app = express();
 //const userRoutes = require('./routes/api/user_api');
 import authRoutes from './routes/api/auth_api.js';
 import userRoutes from './routes/api/user_api.js';
-//import shopRoutes from './routes/api/shop_api.js';
+import shopRoutes from './routes/api/shop_api.js';
 //import reviewRoutes from './routes/api/review_api.js';
 
 
@@ -19,7 +19,7 @@ app.use(morgan("dev"));
 
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
-//app.use('/api/shops', shopRoutes);
+app.use('/api/shops', shopRoutes);
 //app.use('/api/users', reviewRoutes);
 
 
