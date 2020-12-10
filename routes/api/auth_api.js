@@ -22,14 +22,14 @@ router.post('/login', async (request, response) => {
             throw Error('Invalid credentials');
         }
 
-        const token = jwt.sign({ id: loginUser._id }, JWT_SECRET);
+        const token = jwt.sign({ id: loginUser._id }, process.env.JWT_SECRET);
         if (!token){
             throw Error('Couldnt sign the token');
         } 
 
         response.status(200).json({
             token, 
-            loginUser: {
+            user: {
                 id: loginUser._id,
                 username: loginUser.username, 
                 email: loginUser.email
