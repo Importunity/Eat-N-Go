@@ -1,0 +1,45 @@
+
+
+.info{
+    border-radius: 0 !important;
+}
+
+.container-fluid{
+    columns: 5;
+}
+
+.shop-images{
+    animation: fadein 1s;
+}
+
+.shop-container{
+    min-height: 93.5vh;
+    background-color: #A3BCB6;
+}
+
+.search{
+    margin-top: 2vh;
+}
+
+#tags{
+    display: inline !important;
+}
+
+@media only screen and (max-width: 1200px){
+    .container-fluid{
+        columns: 3;
+    }
+}
+
+
+
+@media only screen and (max-width: 600px){
+    .container-fluid{
+        columns: 1;
+    }
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
