@@ -2,8 +2,8 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 const model = mongoose.model;
 
-const FoodSchema = new Schema({
-    name: {
+const TagSchema = new Schema({
+    tagName: {
         type: String,
         required: true
     }
@@ -35,7 +35,7 @@ const ShopSchema = new Schema({
         ref: "User", 
         required: true
     },
-    food: [FoodSchema],
+    tags: [TagSchema],
     
 })
 
