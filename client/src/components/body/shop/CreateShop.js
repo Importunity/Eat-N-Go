@@ -1,4 +1,4 @@
-import { Backdrop, Button, Fade, InputAdornment, makeStyles, Modal, TextField, Tooltip } from '@material-ui/core';
+import { Backdrop, Button, Fade, InputAdornment, makeStyles, Modal, TextField, Tooltip, Typography, Slider } from '@material-ui/core';
 import React, { useState } from 'react';
 import { addShop } from '../../../flux/actions/shop';
 import PropTypes from 'prop-types';
@@ -72,16 +72,16 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 function CreateShop(props){
-    const[info, setInfo] = useState({name: '', description: '', link: '', state: '', address: '', tags: []})
+    const[info, setInfo] = useState({name: '', description: '', link: '', state: states[0], address: '', tags: [], priceRange: [0,0], storeHours: []})
     const[tag, setTag] = useState('');
     const[tags, setTags] = useState([])
+    const[time, setTime] = useState([]);
     const classes = useStyles();
     const {auth} = props;
     const submitShop = (event) => {
         event.preventDefault();
         setInfo({tags: tags})
         props.addShop(info, auth.user._id);
-
         event.target.reset();
     }
 
@@ -93,9 +93,6 @@ function CreateShop(props){
         setTags([...tags,{tagName: tag}]);
     }
 
-
-
-
     const handleChange = (event) => {
         setInfo({...info, [event.target.name]: event.target.value})
     }
@@ -104,10 +101,10 @@ function CreateShop(props){
             <Fade in={props.open}>
                 <div className={classes.paper}>
                     <form id="create-shop-form" onSubmit={submitShop}>
-                        <TextField name="name" className="universal-input" fullWidth placeholder="name" onChange={handleChange}/>
-                        <TextField name="description" className="universal-input" fullWidth placeholder="description" onChange={handleChange}/>
+                        <TextField name="name" label="required name" required className="universal-input" fullWidth placeholder="name of the shop" onChange={handleChange}/>
+                        <TextField name="description" label="required description" required className="universal-input" fullWidth placeholder="description about the shop" onChange={handleChange}/>
                         <TextField name="link" className="universal-input" fullWidth placeholder="link" onChange={handleChange}/>
-                        <TextField name="state" select className="universal-input" fullWidth placeholder="state"  value={info.state} SelectProps={{native: true}} onChange={handleChange}>
+                        <TextField name="state" label="Required" select required className="universal-input" fullWidth placeholder="state"  value={info.state} SelectProps={{native: true}} onChange={handleChange}>
                             {states.map((state) => (
                                 <option key={state} value={state}>
                                     {state}
@@ -115,7 +112,10 @@ function CreateShop(props){
                             ))}
                         </TextField>
                         <TextField name="address" className="universal-input" fullWidth placeholder="address" onChange={handleChange} />
-                        <TextField id="tags" className="universal-input" variant="outlined" placeholder="type in a food tag (example: banh mi)" fullWidth 
+                        <Typography className="universal-input">Store Hours</Typography>
+                        <TextField placeholder="From" />
+                        <TextField placeholder="To" style={{marginLeft: "50px"}}/>
+                        <TextField id="tags" className="universal-input" variant="outlined" placeholder="type in a food tag (example: banh mi, pho)" fullWidth 
                             InputProps={{
                                 endAdornment: (
                                     <InputAdornment className="universal-icon" position="start">
@@ -127,6 +127,11 @@ function CreateShop(props){
                                     </InputAdornment>)}} 
                             onChange={tagChange}
                         />
+                        <TextField className="universal-input" fullWidth type="file" variant="outlined"/>
+                        <Typography className="universal-input" gutterBottom>
+                            Price Range
+                        </Typography>
+                        <Slider aria-labelledby="range-slider" valueLabelDisplay="auto" />
                         <Button className="universal-input default-button" style={{float: "right"}} form="create-shop-form" type="submit" variant="outlined">Create Shop</Button>
                     </form>
                 </div>
