@@ -1,0 +1,21 @@
+.images{
+    width: 30vw;
+    margin: auto;
+    height: 30vh;
+}
+
+.description{
+    text-align: center;
+}
+
+.picture{
+    margin-top: 10%;
+}
+
+.slick-prev {
+    left: 100px !important;
+    z-index: 1 !important;
+}
+.slick-next {
+    right: 100px !important;
+}
