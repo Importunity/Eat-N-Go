@@ -28,7 +28,7 @@ const ShopSchema = new Schema({
         type: String,
         required: true
     },
-    links: {
+    link: {
         type: String
     },
     state: {
@@ -51,7 +51,7 @@ const ShopSchema = new Schema({
     phone: {
         type: String
     },
-    openTimes: [TimeSchema],
+    storeHours: TimeSchema,
     priceRange: [Number]
     
 })

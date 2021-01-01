@@ -45,6 +45,15 @@
     
 }
 
+.chip-container{
+    display: inline-flex;
+    margin: 10px 0 0 0;
+}
+
+.chip{
+    margin-right: 10px;
+}
+
 #read-more{
     position: relative;
     color: lightgray !important;
@@ -152,9 +161,17 @@
 
 
 
-@media only screen and (max-width: 600px){
+
+@media only screen and (max-width: 1000px){
     .container-fluid{
         columns: 1;
+    }
+    .shop-card{
+        margin-top: 2vh !important;
+    }
+
+    #read-more{
+        left: 65vw;
     }
 }
 

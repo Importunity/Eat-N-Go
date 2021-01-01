@@ -91,7 +91,7 @@ function Navbar(props) {
                         </Toolbar>
                     </AppBar>
                     <Switch>
-                        <Route path="/login"><Login showSearchHandler={showSearchHandler} /></Route>
+                        <Route path="/login"><Login showSearchHandler={showSearchHandler} changeNavColor={changeNavColor} /></Route>
                         <Route path="/shops"><Shop shops={shops} showSearchHandler={showSearchHandler} changeNavColor={changeNavColor} /></Route>
                         <Route path="/"><Home showSearchHandler={showSearchHandler} changeNavColor={changeNavColor} /></Route>
                     </Switch>

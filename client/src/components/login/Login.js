@@ -26,6 +26,7 @@ function Login(props){
 
     useEffect(() => {
         props.showSearchHandler(false);
+        props.changeNavColor("#A3BCB6");
     }, [])
     const classes = useStyles();
     const [open, setOpen] = useState(false);
