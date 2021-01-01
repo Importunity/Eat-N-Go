@@ -1,4 +1,4 @@
-import { Button, Card, CardActions, CardContent, CardHeader, CardMedia, Typography } from '@material-ui/core';
+import { Button, Card, CardActions, CardContent, CardHeader, Typography } from '@material-ui/core';
 import React, { Fragment, useEffect, useState } from 'react';
 import '../../../styles/shop.css';
 import img2 from '../../../assets/images/img2.jpeg';
@@ -14,8 +14,6 @@ function Shop(props){
         props.changeNavColor("white")
     }, [props.shops])
 
-    console.log(shops);
-
     const clickedShop = (shop) => {
         setCurrentShop(shop);
     }
@@ -23,7 +21,6 @@ function Shop(props){
     const clearCurrentShop = () => {
         setCurrentShop(null);
     }
-    console.log(currentShop);
     return(
         <>
         {currentShop === null?
@@ -34,24 +31,13 @@ function Shop(props){
                             {shops.map((shop, index) => {
                                 return(
                                     <div key={shop._id}>
-                                        <Card className="shop-card mb-3 container">
+                                        <Card className="shop-card mt-0 container">
                                             <CardHeader 
                                                 title={<Typography variant="h5">{shop.name}</Typography>} 
                                                 subheader={<Typography variant="subtitle2">{shop.state}</Typography>}
                                             />
                                             <img className="shop-media" alt="" src={img2} />
                                             <CardContent>
-                                                <Typography variant="caption">
-                                                    {shop.tags.map((tag, index) => {
-                                                        return(
-                                                            <>
-                                                                <span key={tag._id}>
-                                                                    {tag.tagName},
-                                                                </span>
-                                                            </>
-                                                        )
-                                                    })}
-                                                </Typography>
                                                 <Typography variant="body1">
                                                     {shop.description !== undefined? <>{shop.description.substring(0,200)}</> : null}
                                                 </Typography>

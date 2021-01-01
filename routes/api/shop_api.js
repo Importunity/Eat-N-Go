@@ -24,10 +24,15 @@ router.post('/:userId', auth, async (request, response) => {
     const newShop = new Shop({
         name: request.body.name,
         description: request.body.description,
+        link: request.body.link,
         state: request.body.state,
         address: request.body.address,
+        email: request.body.email,
         authorId: request.params.userId,
-        tags: request.body.tags
+        priceRange: request.body.priceRange,
+        tags: request.body.tags,
+        storeHours: request.body.storeHours,
+        phone: request.body.phoneNumber
     })
 
     try{
