@@ -41,17 +41,7 @@ function Shop(props){
                                             />
                                             <img className="shop-media" alt="" src={img2} />
                                             <CardContent>
-                                                <Typography variant="caption">
-                                                    {shop.tags.map((tag, index) => {
-                                                        return(
-                                                            <>
-                                                                <span key={tag._id}>
-                                                                    {tag.tagName},
-                                                                </span>
-                                                            </>
-                                                        )
-                                                    })}
-                                                </Typography>
+                                                
                                                 <Typography variant="body1">
                                                     {shop.description !== undefined? <>{shop.description.substring(0,200)}</> : null}
                                                 </Typography>
