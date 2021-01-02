@@ -42,7 +42,7 @@ function Shop(props){
                                             <img className="shop-media" alt="" src={img2} />
                                             <CardContent>
                                                 <Typography variant="body1">
-                                                    {shop.description !== undefined? <>{shop.description.substring(0,200)}</> : null}
+                                                    {shop.description !== undefined? <>{shop.description.substring(0,200).toLowerCase()}</> : null}
                                                 </Typography>
                                             </CardContent>
                                             <CardActions  className="card-actions">

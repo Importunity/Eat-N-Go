@@ -47,11 +47,14 @@
 
 .chip-container{
     display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
     margin: 10px 0 0 0;
 }
 
 .chip{
     margin-right: 10px;
+    margin-top: 10px;
 }
 
 #read-more{
@@ -107,6 +110,7 @@
 
 
 
+
 .shop-page-review{
     grid-area: review;
 }
@@ -157,6 +161,9 @@
     .shop-page-frame-column img {
         max-height: 100px;
     }
+    .shop-card-page{
+        margin-top: 2vh !important;
+    }
 }
 
 
@@ -166,7 +173,7 @@
     .container-fluid{
         columns: 1;
     }
-    .shop-card{
+    .shop-card-page{
         margin-top: 2vh !important;
     }
 
