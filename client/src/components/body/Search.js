@@ -6,7 +6,7 @@ function Search(props){
         props.handleSearchChange(event.target.value);
     }
     return(
-        <TextField className="search" variant="outlined"  placeholder="example: kitchen" style={{width: "70%"}} onChange={change}/>
+        <TextField className="search" variant="outlined"  placeholder="example: kitchen" onChange={change}/>
     )
 }
 

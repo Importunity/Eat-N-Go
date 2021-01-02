@@ -1,6 +1,22 @@
+import { Rating } from '@material-ui/lab';
 import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 const model = mongoose.model;
+
+const RatingSchema = new Schema({
+    food: {
+        type: Number,
+        required: true,
+    },
+    service: {
+        type: Number,
+        required: true
+    },
+    value: {
+        type: Number,
+        required: true
+    }
+})
 
 const ReviewSchema = new Schema({
     title: {
@@ -11,13 +27,10 @@ const ReviewSchema = new Schema({
         type: String,
         required: true
     },
-    rating: {
-        type: Number,
-        required: true
-    },
+    rating: [RatingSchema],
     authorId: {
         type: mongooose.Schema.Types.ObjectId, 
-        ref: "User", 
+        reference: "User", 
         required: true
     },
     postId: {

@@ -9,6 +9,16 @@ const TagSchema = new Schema({
     }
 })
 
+const TimeSchema = new Schema({
+    from: {
+        type: String
+    },
+    to: {
+        type: String
+    }
+})
+
+
 const ShopSchema = new Schema({
     name: {
         type: String,
@@ -16,10 +26,9 @@ const ShopSchema = new Schema({
     },
     description: {
         type: String,
-        required: true,
-        maxlength: 300
+        required: true
     },
-    links: {
+    link: {
         type: String
     },
     state: {
@@ -36,6 +45,14 @@ const ShopSchema = new Schema({
         required: true
     },
     tags: [TagSchema],
+    email: {
+        type: String
+    },
+    phone: {
+        type: String
+    },
+    storeHours: TimeSchema,
+    priceRange: [Number]
     
 })
 

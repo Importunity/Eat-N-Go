@@ -24,12 +24,16 @@ const useStyles = makeStyles((theme) => ({
 
 function Login(props){
 
+    useEffect(() => {
+        props.showSearchHandler(false);
+        props.changeNavColor("#A3BCB6");
+    }, [])
     const classes = useStyles();
     const [open, setOpen] = useState(false);
     const[msg, setMsg] = useState(null);
     const[info, setInfo] = useState({email:'', password:''});
     const[submitted, setSubmitted] = useState(false);
-    const{error, isAuthenticated} = props
+    const{error} = props
 
     const handleOpen = () => {
         setOpen(true);
@@ -63,7 +67,7 @@ function Login(props){
             <form className="input-form" onSubmit={loginSubmit}>
                 <Typography style={{textAlign: "center", fontWeight: "bold", fontSize: "25px"}}>LOGIN FORM</Typography>
                 <TextField fullWidth name="email" label="Email" variant="outlined" className="input-login" placeholder="example@gmail.com" onChange={infoChange} />
-                <TextField fullWidth name="password" label="Password" variant="outlined" className="input-login" placeholder="password" onChange={infoChange} />
+                <TextField fullWidth name="password" label="Password" type="password" variant="outlined" className="input-login" placeholder="password" onChange={infoChange} />
                 <Button type="submit" className="form-button" variant="outlined">Login</Button>
                 <Button style={{float: "right"}} className="form-button" variant="outlined" onClick={handleOpen}>Register</Button>
                 {msg !== null && submitted? <Alert className="input-login" color="error">{msg}</Alert> : null}

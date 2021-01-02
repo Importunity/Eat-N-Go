@@ -10,3 +10,9 @@
 #logo{
     border: none !important;
 }
+
+.search{
+    flex-grow: 1;
+    padding-left: 30% !important;
+    padding-right: 30% !important;
+}
