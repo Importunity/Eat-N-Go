@@ -4,10 +4,12 @@ const model = mongoose.model;
 
 const ImageSchema = new Schema({
     image: {
-        type: String
+        type: String,
+        required: true
     },
     cloudinaryId: {
-        type: String
+        type: String,
+        required: true
     }
 })
 

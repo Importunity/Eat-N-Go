@@ -7,15 +7,17 @@
 }
 
 .container-fluid{
-    columns: 5;
     padding-bottom: 2vh;
 }
+
 
 .shop-images{
     animation: fadein 1s;
 }
 
 .shop-container{
+    display: flex;
+    flex-wrap: wrap;
     min-height: 93.5vh;
     background-color: white;
 }
@@ -33,6 +35,8 @@
     height: 500px;
     background-color: rgb(44, 42, 42) !important;
     color: lightgray !important;
+    width: 20vw;
+    margin-right: 1vw;
 }
 
 
@@ -85,6 +89,7 @@
 
 .shop-page-frame-row{
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
 }
 
@@ -189,9 +194,7 @@
 
 
 @media only screen and (max-width: 1200px){
-    .container-fluid{
-        columns: 3;
-    }
+
 
     .shop-page-details{
         columns: 1;
@@ -208,9 +211,7 @@
 
 
 @media only screen and (max-width: 1000px){
-    .container-fluid{
-        columns: 1;
-    }
+
     .shop-card-page{
         margin-top: 2vh !important;
     }

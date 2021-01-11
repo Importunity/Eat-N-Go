@@ -74,9 +74,8 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 function CreateShop(props){
-    const[info, setInfo] = useState({name: '', description: '', link: '', state: states[0], address: '', phoneNumber: '',email: '', tags: [], priceRange: [20,40], storeHours: {from: '', to: ''}, image: null})
+    const[info, setInfo] = useState({name: '', description: '', link: '', state: states[0], address: '', phoneNumber: '',email: '', tags: [{tagName: ''}], priceRange: [20,40], storeHours: {from: '', to: ''}, image: null})
     const[tag, setTag] = useState('');
-    const[image, setImage] = useState(null);
     const[errors, setErrors] = useState({tagError: '', nameError: ''});
     const classes = useStyles();
 
@@ -98,29 +97,24 @@ function CreateShop(props){
     const submitShop = (event) => {
         event.preventDefault();
         const formData = new FormData();
-        /*Object.entries(info).forEach(([key, value]) => {
-            if(key !== image){
-                formData.append(key, value)
-            }
-        })*/
         formData.append("name", info.name);
         formData.append("description", info.description);
-        //formData.append("link", info.link);
+        formData.append("link", info.link);
         formData.append("state", info.state);
-        //formData.append("address", info.address);
-        //formData.append("phoneNumber", info.phoneNumber);
+        formData.append("address", info.address);
+        formData.append("phoneNumber", info.phoneNumber);
         formData.append("email", info.email);
         for(var j = 0; j < info.tags.length; j++){
-            formData.append(`tags[{${j}}]`, info.tags[j]);
+            formData.append(`tags[${j}][tagName]`, info.tags[j].tagName);
         }
         for(var i = 0; i < info.priceRange.length; i++){
             formData.append(`priceRange[${i}]`, info.priceRange[i])
         }
-        //formData.append("storeHours", info.storeHours);
         formData.append("image", info.image);
-        props.addShop(formData, auth.user._id);
+        props.addShop(formData, auth.user.id === undefined? auth.user._id : auth.user.id);
         clear();
     }
+
     const changeTime = (event) => {
         setInfo({...info, storeHours: {...info.storeHours, [event.target.name]: event.target.value}})
     }
@@ -146,6 +140,7 @@ function CreateShop(props){
         }
     }
 
+
     const deleteTag = (tagNameToDelete) => {
         setInfo({...info, tags: [...info.tags.filter(tag => tag.tagName !== tagNameToDelete)]})
     }
@@ -158,7 +153,6 @@ function CreateShop(props){
         setInfo({...info, image: event.target.files[0]})
     }
 
-    console.log(info);
     return(
         <Modal className={classes.modal} open={props.open} onClose={props.handleCloseModal} closeAfterTransition BackdropComponent={Backdrop} BackdropProps={{timeout: 500}}>
             <Fade in={props.open}>

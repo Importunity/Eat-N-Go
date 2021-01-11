@@ -23,10 +23,11 @@ router.get('/', async (request, response) => {
 })
 
 // create a shop
-router.post('/:userId', upload.single("image"), auth, async (request, response) => {
+router.post('/:userId', upload.single("image"), async (request, response) => {
     console.log(request);
     try{
         const filePath = request.file.path;
+        //console.log(filePath)
         const result = await cloudinary.uploader.upload(filePath, {folder: `EAT-N-GO/Shops/${request.body.name}`});
         const newImage = new image({
             image: result.secure_url,
@@ -45,7 +46,7 @@ router.post('/:userId', upload.single("image"), auth, async (request, response) 
             tags: request.body.tags,
             storeHours: request.body.storeHours,
             phone: request.body.phoneNumber,
-            //image: newImage
+            image: newImage
         })
         //console.log(newShop);
         
