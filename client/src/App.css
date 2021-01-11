@@ -1,5 +1,5 @@
 .main-container{
-  background-color: #A3BCB6;
+  background-color: white;
   min-height: 100vh;
   width: auto;
 }
@@ -18,6 +18,10 @@
 
 .default-button{
   outline: none !important;
+}
+
+.default-text{
+  user-select: none;
 }
 
 .default-card{

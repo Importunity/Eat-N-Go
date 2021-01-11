@@ -1,7 +1,7 @@
 .images{
-    width: 30vw;
+    width: 60vw;
     margin: auto;
-    height: 30vh;
+    height: 40vh;
 }
 
 .description{
@@ -13,9 +13,9 @@
 }
 
 .slick-prev {
-    left: 100px !important;
+    left: 30px !important;
     z-index: 1 !important;
 }
 .slick-next {
-    right: 100px !important;
+    right: 30px !important;
 }

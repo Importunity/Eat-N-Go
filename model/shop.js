@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 const model = mongoose.model;
+import image from './image.js';
 
 const TagSchema = new Schema({
     tagName: {
@@ -52,7 +53,8 @@ const ShopSchema = new Schema({
         type: String
     },
     storeHours: TimeSchema,
-    priceRange: [Number]
+    priceRange: [Number],
+    image: image.schema
     
 })
 

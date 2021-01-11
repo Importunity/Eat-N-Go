@@ -1,17 +1,13 @@
 import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
-const model = mongoose.Schema;
+const model = mongoose.model;
 
 const ImageSchema = new Schema({
-    name: {
-        type: String
-    },
-    description:{
-        type: String
-    },
     image: {
-        data: Buffer,
-        contentType: String
+        type: String
+    },
+    cloudinaryId: {
+        type: String
     }
 })
 
