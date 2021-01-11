@@ -31,7 +31,7 @@ export const register = ({username, email, password}) => dispatch => {
             payload: response.data
         }))
         .catch(error => {
-            console.log(error);
+            //console.log(error);
             dispatch(getErrors(error.response.data, error.response.status, 'REGISTER_FAIL'));
             dispatch({
                 type: REGISTER_FAIL

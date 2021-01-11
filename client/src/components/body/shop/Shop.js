@@ -27,10 +27,10 @@ function Shop(props){
     return(
         <>
         {currentShop === null?
-            <div className="shop-container container-fluid">
+            <div className="container-fluid">
                 <>
                     {shops !== null? (
-                        <div>
+                        <div className="shop-container">
                             {shops.map((shop, index) => {
                                 return(
                                     <div key={shop._id}>

@@ -19,7 +19,13 @@ export const loadShops = () => (dispatch) =>  {
 }
 
 export const addShop = (shop, id) => (dispatch, getState) => {
-    axios.post(`/api/shops/${id}`, shop, tokenConfig(getState))
+    const config = {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+    }
+    console.log(id);
+    axios.post(`/api/shops/${id}`, shop, tokenConfig(getState), config)
         .then(response => dispatch({
             type: ADD_SHOP,
             payload: response.data

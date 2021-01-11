@@ -6,6 +6,7 @@ import {connect} from 'react-redux';
 import AddBoxIcon from '@material-ui/icons/AddBox';
 import '../../../styles/shop.css';
 import { Alert } from '@material-ui/lab';
+import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 
 
 
@@ -73,10 +74,11 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 function CreateShop(props){
-    const[info, setInfo] = useState({name: '', description: '', link: '', state: states[0], address: '', phoneNumber: '',email: '', tags: [], priceRange: [20,40], storeHours: {from: '', to: ''}})
+    const[info, setInfo] = useState({name: '', description: '', link: '', state: states[0], address: '', phoneNumber: '',email: '', tags: [{tagName: ''}], priceRange: [20,40], storeHours: {from: '', to: ''}, image: null})
     const[tag, setTag] = useState('');
     const[errors, setErrors] = useState({tagError: '', nameError: ''});
     const classes = useStyles();
+
     const {auth} = props;
     const clear = () => {
         setInfo({
@@ -88,14 +90,31 @@ function CreateShop(props){
             email: '',
             tags: [],
             priceRange: [20,40],
-            storeHours: {}
+            storeHours: {},
+            image: null
         })
     }
     const submitShop = (event) => {
         event.preventDefault();
-        props.addShop(info, auth.user._id);
+        const formData = new FormData();
+        formData.append("name", info.name);
+        formData.append("description", info.description);
+        formData.append("link", info.link);
+        formData.append("state", info.state);
+        formData.append("address", info.address);
+        formData.append("phoneNumber", info.phoneNumber);
+        formData.append("email", info.email);
+        for(var j = 0; j < info.tags.length; j++){
+            formData.append(`tags[${j}][tagName]`, info.tags[j].tagName);
+        }
+        for(var i = 0; i < info.priceRange.length; i++){
+            formData.append(`priceRange[${i}]`, info.priceRange[i])
+        }
+        formData.append("image", info.image);
+        props.addShop(formData, auth.user.id === undefined? auth.user._id : auth.user.id);
         clear();
     }
+
     const changeTime = (event) => {
         setInfo({...info, storeHours: {...info.storeHours, [event.target.name]: event.target.value}})
     }
@@ -109,6 +128,7 @@ function CreateShop(props){
     }
 
 
+
     const addTag = () => {
         // check to see if the tag exists in the tag array
         const containsTag = info.tags.some(tagg => tagg.tagName === tag)
@@ -120,6 +140,7 @@ function CreateShop(props){
         }
     }
 
+
     const deleteTag = (tagNameToDelete) => {
         setInfo({...info, tags: [...info.tags.filter(tag => tag.tagName !== tagNameToDelete)]})
     }
@@ -127,6 +148,11 @@ function CreateShop(props){
     const handleChange = (event) => {
         setInfo({...info, [event.target.name]: event.target.value})
     }
+
+    const changeImage = (event) => {
+        setInfo({...info, image: event.target.files[0]})
+    }
+
     return(
         <Modal className={classes.modal} open={props.open} onClose={props.handleCloseModal} closeAfterTransition BackdropComponent={Backdrop} BackdropProps={{timeout: 500}}>
             <Fade in={props.open}>
@@ -172,13 +198,18 @@ function CreateShop(props){
                             })}
                         </div>
                         {errors.tagError? <Alert className="universal-input" color="error">{errors.tagError}</Alert> : null }
+                        <br />
+                        <input className="universal-input" style={{display: "none"}} id="images" type="file" onChange={changeImage} />
+                        <label className="universal-input" id="image-upload-btn" htmlFor="images" ><CloudUploadIcon style={{marginBottom: "5px"}} /> <span className="default-text">Click to upload shop image</span></label>
+
                         <Typography className="universal-input" gutterBottom>
                             Price Range
                         </Typography>
                         <Slider aria-labelledby="range-slider" valueLabelDisplay="auto" name="priceRange" value={info.priceRange} onChange={changePriceRange} />
-                        <Button className="universal-input default-button" style={{float: "right"}} form="create-shop-form" type="submit" variant="outlined">Create Shop</Button>
+                        <Button className="universal-input default-button" style={{float: "right"}} type="submit" form="create-shop-form" variant="outlined">Create Shop</Button>
                     </form>
                 </div>
+                
             </Fade>
         </Modal>
     )

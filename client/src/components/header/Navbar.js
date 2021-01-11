@@ -71,7 +71,7 @@ function Navbar(props) {
                 <Router>
                     <AppBar position="static" color="inherit" elevation={0} style={{backgroundColor: navColor === null? "inherit" : navColor}}> 
                         <Toolbar>
-                            <Typography style={{fontWeight: "bolder"}} variant="h6" className={classes.title}>
+                            <Typography style={{fontWeight: "bolder"}} variant="h6">
                                 <Link className="navbar-button" to="/" >EAT N GO</Link>
                             </Typography>
                             {showSearch? <Search /> : <div className="search"></div>}
