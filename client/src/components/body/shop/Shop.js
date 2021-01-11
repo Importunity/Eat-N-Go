@@ -14,7 +14,7 @@ function Shop(props){
         props.changeNavColor("white")
     }, [props.shops])
 
-    console.log(shops);
+    //console.log(shops);
 
     const clickedShop = (shop) => {
         setCurrentShop(shop);
@@ -23,7 +23,7 @@ function Shop(props){
     const clearCurrentShop = () => {
         setCurrentShop(null);
     }
-    console.log(currentShop);
+    //console.log(currentShop);
     return(
         <>
         {currentShop === null?

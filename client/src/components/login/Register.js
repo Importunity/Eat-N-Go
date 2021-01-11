@@ -36,7 +36,6 @@ function Register(props){
                 <TextField fullWidth label="Username" variant="outlined" className="input-login" placeholder="username" name="username" onChange={infoChange}/>
                 <TextField fullWidth label="Email" variant="outlined" className="input-login" placeholder="example@gmail.com" name="email" onChange={infoChange} />
                 <TextField fullWidth label="Password" type="password" variant="outlined" className="input-login" placeholder="password" name="password" onChange={infoChange} />
-                {msg !== null && submitted? <Alert className="input-login" color="error">{msg}</Alert> : null}
                 <Button className="form-button" form="register-form" type="submit" variant="outlined" style={{float: "right"}}>Register</Button>
             </form>
         </div>

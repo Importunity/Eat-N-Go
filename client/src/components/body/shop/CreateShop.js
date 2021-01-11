@@ -78,6 +78,7 @@ function CreateShop(props){
     const[errors, setErrors] = useState({tagError: '', nameError: ''});
     const classes = useStyles();
     const {auth} = props;
+    //console.log(auth);
     const clear = () => {
         setInfo({
             name: '',
@@ -93,7 +94,7 @@ function CreateShop(props){
     }
     const submitShop = (event) => {
         event.preventDefault();
-        props.addShop(info, auth.user._id);
+        props.addShop(info, auth.user.id);
         clear();
     }
     const changeTime = (event) => {
