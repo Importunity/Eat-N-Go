@@ -1,5 +1,5 @@
 <h1>Description:</h1>
-<p>User Reviews of Food Restaurants</p>
+<p>User Reviews of Food Restaurants that are listed in the Eat N Go facebook group page</p>
 <hr>
 <h1>TODO:</h1>
 <ol>
@@ -40,3 +40,5 @@
     </li>
     <li>Create middleware for jwt verification</li>
 </ol>
+<h1>Current Gif Example:</h1>
+<img src="./documentation/v1.gif" alt="" width="70%"/>
