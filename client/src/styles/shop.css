@@ -1,5 +1,3 @@
-
-
 .shop-media{
     height: 220px;
 }
@@ -9,15 +7,17 @@
 }
 
 .container-fluid{
-    columns: 5;
     padding-bottom: 2vh;
 }
+
 
 .shop-images{
     animation: fadein 1s;
 }
 
 .shop-container{
+    display: flex;
+    flex-wrap: wrap;
     min-height: 93.5vh;
     background-color: white;
 }
@@ -35,6 +35,8 @@
     height: 500px;
     background-color: rgb(44, 42, 42) !important;
     color: lightgray !important;
+    width: 20vw;
+    margin-right: 1vw;
 }
 
 
@@ -47,11 +49,14 @@
 
 .chip-container{
     display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
     margin: 10px 0 0 0;
 }
 
 .chip{
     margin-right: 10px;
+    margin-top: 10px;
 }
 
 #read-more{
@@ -84,6 +89,7 @@
 
 .shop-page-frame-row{
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
 }
 
@@ -104,8 +110,6 @@
 .shop-page-footer{
     grid-area: footer;
 }
-
-
 
 .shop-page-review{
     grid-area: review;
@@ -144,12 +148,53 @@
     padding: 2vh 2vw;
 }
 
+#image-upload-btn{
+    border: 1px solid black;
+	border-radius: 5px;
+	background-color: white;
+	color: black;
+	padding: 10px;
+	font-size: 20px;
+	cursor: pointer;
+	position: relative;
+	overflow: hidden;
+	transition: 0.5s ease;
+}
+
+#image-upload-btn::after{
+    content: "";
+    background-color: rgb(90, 89, 89);
+    opacity: 0.2;
+    height: 300px;
+    width: 100px;
+    position: absolute;
+    left: -120px;
+    top: -120px;
+    transition: 0.5s ease;
+}
+
+#image-upload-btn:hover:after {
+    left: 100%;	
+    top: 0;	
+}
+
+.rating-desc{
+    font-size: large;
+}
+
+.rating-content{
+    position: relative;
+    top: 10vh;
+}
+
+.rating-icon{
+    pointer-events: none;
+}
+
 
 
 @media only screen and (max-width: 1200px){
-    .container-fluid{
-        columns: 3;
-    }
+
 
     .shop-page-details{
         columns: 1;
@@ -157,16 +202,17 @@
     .shop-page-frame-column img {
         max-height: 100px;
     }
+    .shop-card-page{
+        margin-top: 2vh !important;
+    }
 }
 
 
 
 
 @media only screen and (max-width: 1000px){
-    .container-fluid{
-        columns: 1;
-    }
-    .shop-card{
+
+    .shop-card-page{
         margin-top: 2vh !important;
     }
 
