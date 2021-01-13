@@ -13,7 +13,6 @@ import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 
 function ShopPage(props){
     const images = [img2,img4,img5,img6,img7];
-    console.log(props.currentShop)
     return(
         <>
         <div className="shop-page-container">
@@ -39,7 +38,7 @@ function ShopPage(props){
                     
                 </div>
                 <div className="shop-page-details">
-                    <Card className="shop-card shop-card-page" >
+                    <Card className="product-card-details shop-card-page" >
                         <CardContent>
                             <Typography variant="h6">
                                 Average Ratings and Reviews
@@ -59,7 +58,7 @@ function ShopPage(props){
 
                         </CardContent>
                     </Card>
-                    <Card className="shop-card shop-card-page">
+                    <Card className="product-card-details shop-card-page">
                         <CardContent>
                             <Typography variant="h6">
                                 Details
@@ -97,7 +96,7 @@ function ShopPage(props){
                                 })}
                         </CardContent>
                     </Card>
-                    <Card className="shop-card shop-card-page">
+                    <Card className="product-card-details shop-card-page">
                         <CardContent>
                             <Typography variant="h6">
                                 Location and Contact

@@ -14,7 +14,6 @@ function Shop(props){
         props.changeNavColor("white")
     }, [props.shops])
 
-    console.log(shops);
 
     const clickedShop = (shop) => {
         setCurrentShop(shop);
@@ -23,7 +22,6 @@ function Shop(props){
     const clearCurrentShop = () => {
         setCurrentShop(null);
     }
-    console.log(currentShop);
     return(
         <>
         {currentShop === null?
@@ -34,20 +32,17 @@ function Shop(props){
                             {shops.map((shop, index) => {
                                 return(
                                     <div key={shop._id}>
-                                        <Card className="shop-card mb-3 container">
+                                        <Card className="shop-card mb-3 container" onClick={() => clickedShop(shop)}>
                                             <CardHeader 
                                                 title={<Typography variant="h5">{shop.name}</Typography>} 
                                                 subheader={<Typography variant="subtitle2">{shop.state}</Typography>}
                                             />
                                             <img className="shop-media" alt="" src={img2} />
                                             <CardContent>
-                                                <Typography variant="body1">
+                                                <Typography>
                                                     {shop.description !== undefined? <>{shop.description.substring(0,200).toLowerCase()}</> : null}
                                                 </Typography>
                                             </CardContent>
-                                            <CardActions  className="card-actions">
-                                                <Button id="read-more" className="default-button" size="small" onClick={() => clickedShop(shop)}>Read More</Button>
-                                            </CardActions>
                                         </Card>
                                     </div>
                                 )
