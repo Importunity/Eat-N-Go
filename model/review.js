@@ -1,45 +1,50 @@
-import { Rating } from '@material-ui/lab';
 import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 const model = mongoose.model;
+import image from './image.js';
 
 const RatingSchema = new Schema({
+    overall: {
+        type: Number,
+    },
     food: {
         type: Number,
-        required: true,
     },
     service: {
         type: Number,
-        required: true
     },
     value: {
         type: Number,
-        required: true
     }
 })
 
 const ReviewSchema = new Schema({
     title: {
         type: String,
-        required: true
+        required: true,
+        max: 50,
+        min: 10
     },
-    description: {
+    review: {
         type: String,
-        required: true
+        required: true,
+        min: 50,
+        max: 300
     },
-    rating: [RatingSchema],
+    rating: RatingSchema,
     authorId: {
-        type: mongooose.Schema.Types.ObjectId, 
-        reference: "User", 
-        required: true
+        type: mongoose.Schema.Types.ObjectId, 
+        reference: "User"
     },
     postId: {
-        type: mongooose.Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         reference: "Shop",
         required: true
-    }
+    },
+    images: image.schema
 })
 
-const Review = model("review", ReviewSchema);
+
+const Review = mongoose.models.review || model('review', ReviewSchema);
 
 export default Review;

@@ -13,4 +13,9 @@ export const GET_SHOPS = "GET_SHOPS";
 export const ADD_SHOP = "ADD_SHOP";
 export const DELETE_SHOP = "DELETE_SHOP";
 export const SHOPS_LOADING = "SHOPS_LOADING";
+// reviews
+export const GET_REVIEWS = "GET_REVIEWS";
+export const ADD_REVIEW = "ADD_REVIEW";
+export const DELETE_REVIEW = "DELETE_REVIEW";
+export const REVIEWS_LOADING = "REVIEWS_LOADING";
 

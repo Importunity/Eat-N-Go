@@ -24,7 +24,7 @@ router.get('/', async (request, response) => {
 
 // create a shop
 router.post('/:userId', upload.single("image"), async (request, response) => {
-    console.log(request);
+    //console.log(request);
     try{
         const filePath = request.file.path;
         //console.log(filePath)
@@ -53,7 +53,7 @@ router.post('/:userId', upload.single("image"), async (request, response) => {
         const shop = await newShop.save();
         response.status(200).json(shop);
     }catch(error){
-        console.log(error);
+        //console.log(error);
         response.status(400).json({msg: error.message});
     }
 })

@@ -1,3 +1,4 @@
+import { AccordionSummary } from '@material-ui/core';
 import axios from 'axios';
 import { tokenConfig } from './auth';
 import { getErrors } from './error';
@@ -24,7 +25,7 @@ export const addShop = (shop, id) => (dispatch, getState) => {
           'Content-Type': 'multipart/form-data'
         }
     }
-    console.log(id);
+    //console.log(id);
     axios.post(`/api/shops/${id}`, shop, tokenConfig(getState), config)
         .then(response => dispatch({
             type: ADD_SHOP,
@@ -35,6 +36,7 @@ export const addShop = (shop, id) => (dispatch, getState) => {
             )
         })
 }
+
 
 export const setShopLoading = () => {
     return {

@@ -1,6 +1,6 @@
-import { Box, Button, Card, CardContent, Divider, Typography } from '@material-ui/core';
+import {Button, Card, CardContent, Divider, TextField, Typography } from '@material-ui/core';
 import { Rating } from '@material-ui/lab';
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import img2 from '../../../assets/images/img2.jpeg';
 import img4 from '../../../assets/images/img4.jpeg';
 import img5 from '../../../assets/images/img5.jpeg';
@@ -10,12 +10,20 @@ import FastfoodIcon from '@material-ui/icons/Fastfood';
 import RoomServiceIcon from '@material-ui/icons/RoomService';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
+import ReviewPage from './ReviewPage';
 
 function ShopPage(props){
     const images = [img2,img4,img5,img6,img7];
+    const[writeReview, setWriteReview] = useState(false);
+
+    if(writeReview){
+        return(
+            <ReviewPage currentShop={props.currentShop} />
+        )
+    }
     return(
         <>
-        <div className="shop-page-container">
+        <div className="shop-page-container" >
             <div className="shop-page-header">
                 <Typography variant="h4">
                     {props.currentShop.name}
@@ -38,6 +46,7 @@ function ShopPage(props){
                     
                 </div>
                 <div className="shop-page-details">
+
                     <Card className="product-card-details shop-card-page" >
                         <CardContent>
                             <Typography variant="h6">
@@ -104,10 +113,27 @@ function ShopPage(props){
                         </CardContent>
                     </Card>
                 </div>
-                <div className="shop-page-review">
+                <div className="shop-page-review" >
                     <Card className="default-card">
-                        <div className="review-container">
-                            <Button id="review-button"><Typography variant="overline">Write a review</Typography></Button>
+                        <div className="review-container" >
+                            <Button className="review-button" onClick={() => setWriteReview(true)}><Typography variant="overline">Write a review</Typography></Button>
+                            <br />
+                            {writeReview?
+                                <div className="card">
+                                    <div className="card-body">
+                                        <div className="card-title">
+                                            <h1>Write A Review</h1>
+                                        </div>
+                                        <Divider></Divider>
+                                        <div style={{fontSize: "14px"}}>
+                                            <input className="default-input universal-input" />
+                                            <textarea className="default-input universal-input" />
+
+                                        </div>
+                                    </div>
+                                </div> 
+                                : null
+                            }
                             <Typography className="review-item" variant="h5">Reviews</Typography>
                             <Divider className="review-item" variant="fullWidth" />
                         </div>

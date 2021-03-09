@@ -83,12 +83,19 @@
     text-align: center;
 }
 
-#review-button{
+.review-button{
     color: white !important;
-    background-color: black;
-    float: right;
+    background-color: black !important;
+    float: right ;
     margin-top: -5px !important;
-    height: 30px;
+    height: 30px ;
+}
+
+#review-page-btn{
+    float: left;
+    margin-bottom: 2vh;
+    margin-top: 2vh !important;
+    height: 40px;
 }
 
 .shop-page-frame{
@@ -200,6 +207,23 @@
     pointer-events: none;
 }
 
+#review-page-container{
+    display: grid;
+    grid-template-areas: 'reviews reviews reviews create create create' ;
+    min-height: calc(100vh - 65px);
+}
+
+#review-page-container > reviews{
+    grid-area: reviews;
+}
+
+#review-page-container .inner-review-page{
+    margin-left: 10vw;
+}
+
+#review-page-container > create{
+    grid-area: create;
+}
 
 
 @media only screen and (max-width: 1200px){
@@ -235,6 +259,11 @@
 
     .shop-card-page{
         margin-top: 2vh !important;
+    }
+    #review-page-container{
+        grid-template-areas: 
+            'reviews reviews reviews reviews reviews reviews'
+            'create create create create create create';
     }
 }
 
